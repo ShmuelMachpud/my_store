@@ -17,6 +17,7 @@ export const connectDB = () =>{
             'Could not connect to DB'
         )
     } else {
+        
         return client
     }
 }

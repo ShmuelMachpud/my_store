@@ -21,6 +21,7 @@ exports.getAllProductsController = (0, express_async_handler_1.default)((req, re
     res.json(allProducts);
 }));
 exports.getProductByIdController = (0, express_async_handler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const product = yield (0, inventoryService_1.getProductByIdService)(req.params.id);
+    const productId = req.params.id;
+    const product = yield (0, inventoryService_1.getProductByIdService)(productId);
     res.json(product);
 }));
