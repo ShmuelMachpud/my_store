@@ -14,16 +14,26 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.app = void 0;
 const express_1 = __importDefault(require("express"));
+// import  chalk from 'chalk';
 const db_1 = require("./configs/db");
+const connectRedis_1 = require("./configs/connectRedis");
 const inventoryRouts_1 = __importDefault(require("./routes/inventoryRouts"));
+const redisRouts_1 = __importDefault(require("./routes/redisRouts"));
 exports.app = (0, express_1.default)();
 const port = 5000;
 exports.app.use('/inventory', inventoryRouts_1.default);
+exports.app.use('/redis', redisRouts_1.default);
 const start = () => __awaiter(void 0, void 0, void 0, function* () {
     const db = yield (0, db_1.connectDB)();
-    console.log('Connecting to database successfully');
+    console.log(('Connecting to database successfully'));
+    const redisClient = yield (0, connectRedis_1.connectRedis)();
+    console.log("connected successfully to Redis client!!! ");
     exports.app.listen(port, () => {
         console.log(`server is running at port ${port}`);
+        // console.log(chalk.blue('Hello world!'));
     });
 });
 start();
+// client.connect()
+// .then(() =>  console.log("connected successfully to Redis client!!! "))
+// .catch((error) => {  if (error instanceof Error) console.log(error.message) })

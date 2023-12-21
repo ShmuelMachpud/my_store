@@ -18,7 +18,7 @@ const getAllProductsDal = () => __awaiter(void 0, void 0, void 0, function* () {
 exports.getAllProductsDal = getAllProductsDal;
 const getProductByIdDal = (_id) => __awaiter(void 0, void 0, void 0, function* () {
     const { rows } = yield (0, queryDB_1.query)(`select * from products where id = '${_id}'`);
-    return rows;
+    return rows[0];
 });
 exports.getProductByIdDal = getProductByIdDal;
 const selectAll = `SELECT 

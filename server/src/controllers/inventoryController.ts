@@ -3,6 +3,7 @@ import { Request, Response } from 'express';
 import asyncHandler from 'express-async-handler';
 import {AdminProduct} from '../types/product'
 
+
 export const getAllProductsController = asyncHandler( async (req:Request, res:Response) =>{
     const allProducts : AdminProduct[] = await getAllProductsService();
 
@@ -12,7 +13,8 @@ export const getAllProductsController = asyncHandler( async (req:Request, res:Re
 })
 
 export const getProductByIdController = asyncHandler( async (req:Request, res:Response) => {
-    const product : AdminProduct = await  getProductByIdService(req.params.id)
+    const productId = req.params.id
+    const product : AdminProduct = await  getProductByIdService(productId)
 
     res.json(product)
 })

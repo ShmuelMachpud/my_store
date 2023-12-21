@@ -7,5 +7,5 @@ const express_1 = __importDefault(require("express"));
 const inventoryController_1 = require("../controllers/inventoryController");
 const inventoryRouter = express_1.default.Router();
 inventoryRouter.get('/', inventoryController_1.getAllProductsController);
-inventoryRouter.get('/:id', inventoryController_1.getAllProductsController);
+inventoryRouter.get('/:id', inventoryController_1.getProductByIdController);
 exports.default = inventoryRouter;

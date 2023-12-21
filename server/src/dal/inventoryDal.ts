@@ -9,7 +9,7 @@ export const getAllProductsDal = async () =>{
 
 export const getProductByIdDal = async (_id: string) =>{
 
-    const {rows} : {rows:AdminProduct[]} = await query(`select name from products where p.id = '${_id}'`)
+    const {rows} : {rows:AdminProduct[]} = await query(`select * from products where id = '${_id}'`)
 
     return rows[0]
 }
