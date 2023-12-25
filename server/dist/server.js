@@ -15,12 +15,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.app = void 0;
 const express_1 = __importDefault(require("express"));
 // import  chalk from 'chalk';
+const cors_1 = __importDefault(require("cors"));
 const db_1 = require("./configs/db");
 const connectRedis_1 = require("./configs/connectRedis");
 const inventoryRouts_1 = __importDefault(require("./routes/inventoryRouts"));
 const redisRouts_1 = __importDefault(require("./routes/redisRouts"));
 exports.app = (0, express_1.default)();
 const port = 5000;
+exports.app.use((0, cors_1.default)());
 exports.app.use('/inventory', inventoryRouts_1.default);
 exports.app.use('/redis', redisRouts_1.default);
 const start = () => __awaiter(void 0, void 0, void 0, function* () {
