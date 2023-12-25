@@ -9,4 +9,3 @@ export async function getAllProducts():Promise<Product[]> {
 
     return await handle(response)
 }
-
