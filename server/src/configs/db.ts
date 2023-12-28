@@ -1,4 +1,6 @@
-import {Pool, PoolClient} from 'pg'
+import {Pool, PoolClient, Client} from 'pg'
+import { client } from './connectRedis'
+
 
 const pool = new Pool ({
     user: 'postgres',
@@ -8,9 +10,15 @@ const pool = new Pool ({
     port: 5432
 })
 
-export const connectDB = () =>{
+const clientElephant = new Pool ({
+    connectionString: 'postgres://spwacbqy:3db9oECWKeNAfOqoIFGoYujkHzwL7-zB@mel.db.elephantsql.com/spwacbqy'
+})
 
-    const client = pool.connect() 
+
+export const connectDB = ()=>{
+
+    // const client = pool.connect() 
+    const client = clientElephant.connect()
 
     if (!client) {
         throw new Error(
