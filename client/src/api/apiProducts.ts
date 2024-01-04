@@ -4,7 +4,7 @@ import {Product} from '../types/typeProducts'
 import handle from './handleApiRes'
 
 // Server Local
-const uriServerLocal = import.meta.env.VITE_API_URI
+// const uriServerLocal = import.meta.env.VITE_API_URI
 
 // Server Render
 const uriServerRender = import.meta.env.VITE_API_URI_RENDER
