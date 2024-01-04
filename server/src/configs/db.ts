@@ -1,17 +1,21 @@
 import {Pool, PoolClient, Client} from 'pg'
 import { client } from './connectRedis'
+import 'dotenv/config'
 
 
 const pool = new Pool ({
-    user: 'postgres',
-    password: '206830895',
-    host: '127.0.0.1' ,
-    database: 'my-store',
-    port: 5432
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    host: process.env.DB_HOST ,
+    database: process.env.DB_NAME,
+    port: Number(process.env.DB_PORT)
 })
 
+const uriDbRender = process.env.URI_DB_RENDER
+
+
 const clientElephant = new Pool ({
-    connectionString: 'postgres://spwacbqy:3db9oECWKeNAfOqoIFGoYujkHzwL7-zB@mel.db.elephantsql.com/spwacbqy'
+    connectionString: uriDbRender
 })
 
 
