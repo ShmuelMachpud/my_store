@@ -3,6 +3,7 @@ import { client } from './connectRedis'
 import 'dotenv/config'
 
 
+// DB Local Postgres
 const pool = new Pool ({
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
@@ -11,11 +12,12 @@ const pool = new Pool ({
     port: Number(process.env.DB_PORT)
 })
 
+// DB Render 
 const uriDbRender = process.env.URI_DB_RENDER
 
 
 const clientElephant = new Pool ({
-    connectionString: uriDbRender
+    connectionString: uriDbRender // uriDbRender or DB Local Postgres
 })
 
 
